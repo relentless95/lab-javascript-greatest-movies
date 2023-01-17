@@ -2001,3 +2001,102 @@ const movies = [
     score: 8
   }
 ];
+
+function getAllDirectors(moviesArray) {
+  return moviesArray.map(movie => movie.director)
+}
+
+// console.log(getAllDirectors(movies))
+// console.log
+
+function getAllDirectors(moviesArray) {
+  return moviesArray.map((movie) => movie.director);
+}
+// console.log(getAllDirectors(movies))
+
+
+// anonymous funtion
+function getAllDirectors(moviesArray) {
+  const directors = moviesArray.map(function(movie) {
+    return movie.director;
+  });
+  return directors;
+}
+
+function howManyMovies(moviesArray) {
+  return moviesArray.filter((movie)=>movie.director ==="Steven Spielberg" && movie.genre.includes('Drama') ).length
+}
+
+// console.log(howManyMovies(movies))
+
+// function scoresAverage(moviesArray){
+//   let total = moviesArray.map((movie)=>movie.score).filter((array)=> typeof array === "number").reduce((acc, curr) => acc+ curr, 0)
+//   let theLength = moviesArray.filter((array)=>typeof array.score ==="number").length
+//   return  Math.round((total/theLength)* 100)/100
+// }
+
+// console.log(scoresAverage(movies))
+
+function dramaMoviesScore(moviesArray) {
+  let total =  moviesArray.filter((movies)=> typeof movies.score ==="number"&& movies.genre.includes("Drama")).map((array)=>array.score).reduce((acc, cur)=>acc + cur,0)
+  let leng = moviesArray.filter((movies)=> typeof movies.score ==="number"&& movies.genre.includes("Drama")).map((array)=>array.score).length
+  return Math.round((total/leng)*100)/100
+}
+
+console.log(dramaMoviesScore(movies))
+
+// function orderByYear(movies) {
+//   return movies.slice().sort((a, b) => {
+//     if (a.year !== b.year) {
+//       return a.year - b.year;
+//     } else {
+//       if (a.title < b.title) {
+//         return -1;
+//       } else if (a.title > b.title) {
+//         return 1;
+//       } else {
+//         return 0;
+//       }
+//     }
+//   });
+// }
+
+// console.log(orderByYear(movies))
+
+
+// function orderByYear(moviesArray) {
+
+
+//   let sortedYears = moviesArray.sort((movie1, movie2) => 
+//       movie1.year - movie2.year ||
+//       movie1.title.localeCompare(movie2.title),
+  
+//   )
+//   console.log(sortedYears)
+  // function copyOfArr(moviesArray) {
+  //     return moviesArray.slice()
+  // }
+  // let copiedArray = copyOfArr(sortedYears)
+
+  // return copiedArray
+// }
+
+// console.log(orderByYear(movies))
+
+function orderAlphabetically(moviesArray) {
+  let alphabeticallysorted =  moviesArray.sort((a,b)=> a.title.localeCompare(b.title))
+  let onlytitle = alphabeticallysorted.map(movObject => movObject.title)
+  
+    let copyExpression= function(movies){
+      if(movies.length > 20){
+      return movies.slice(0,21);
+    } else {
+      return movies.slice();
+    }
+
+  }
+  return copyExpression(onlytitle)
+ 
+}
+
+console.log(orderAlphabetically(movies))
